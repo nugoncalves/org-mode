@@ -228,38 +228,4 @@ SCHEDULED: <%(format-time-string \"%Y-%m-%d\" (org-time-string-to-time my-date))
 (set-frame-parameter (selected-frame) 'alpha-background 85)
 (add-to-list 'default-frame-alist '(alpha-background . 85))
 
-;; Configuração de nuno@pop-os
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
-(use-package! auth-source-xoauth2
-  :config
-  ;; OAuth2 Credentials
-  (setq auth-source-xoauth2-creds
-        '((:user "nmrgoncalves@gmail.com"
-          :client-id "178197021082-o7unpggs4sth43ra7vgopjjeij7u8eoe.apps.googleusercontent.com"
-          :client-secret "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"
-          :token-url "https://accounts.google.com/o/oauth2/token"
-          :auth-url "https://accounts.google.com/o/oauth2/auth")))
 
-  ;; Enable OAuth2 for mu4e
-  (auth-source-xoauth2-enable))
-
-
-;; General email settings
-(setq mu4e-maildir (expand-file-name "~/.mail/pessoal")
-      mu4e-sent-folder "/[Gmail]/Sent Mail"
-      mu4e-drafts-folder "/[Gmail]/Drafts"
-      mu4e-trash-folder  "/[Gmail]/Trash"
-      mu4e-refile-folder "/[Gmail]/All Mail"
-
-      ;; Using OAuth2 for authentication
-      mu4e-smtp-auth 'xoauth2
-      smtpmail-smtp-server "smtp.gmail.com"
-      smtpmail-smtp-service 587
-      smtpmail-stream-type 'starttls
-      smtpmail-smtp-user "nmrgoncalves@gmail.com"
-
-      ;; Fetching emails
-      mu4e-get-mail-command "mbsync -a"  ;; or use offlineimap
-      mu4e-update-interval 300
-      user-mail-address "nmrgoncalves@gmail.com"
-      user-full-name "Nuno Gonçalves")
